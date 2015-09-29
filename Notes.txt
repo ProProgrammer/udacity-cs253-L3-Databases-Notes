@@ -2,3 +2,10 @@ Databases:
 	Its a program that stores and retrieves data.
 	Particularly: Large amounts of data
 	More Particularly: Large amounts of structured data
+
+Tables:
+	Made up of columns and rows.
+
+	Columns in database are basically the properties that make up a particular type
+
+	Every entry of data in a table is called a row
