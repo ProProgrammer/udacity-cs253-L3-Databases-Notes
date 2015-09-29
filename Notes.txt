@@ -1,0 +1,4 @@
+Databases:
+	Its a program that stores and retrieves data.
+	Particularly: Large amounts of data
+	More Particularly: Large amounts of structured data
