@@ -89,10 +89,25 @@ links = [
 # make the function query() return the number of votes for the link whose ID is
 # 15
 
-def query():
-    for link in links:
-        print 'id:', link.id
-        print 'votes:', link.votes
-        print '---------------'
+# def query():
+#     for link in links:
+#         print 'id:', link.id
+#         print 'votes:', link.votes
+#         print '---------------'
 
-query()
+# query()
+
+def query():
+    tempDict = {}
+    result = []
+    for link in links:
+        if link.submitter_id == 62443:
+            tempDict[link.submitted_time] = link
+            # print 'submitted_time:', link.submitted_time
+            # print 'url:', link.url
+    for item in sorted(tempDict):
+        result.append(tempDict[item])
+
+    return result
+
+print query()
