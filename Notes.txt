@@ -17,3 +17,20 @@ Why Databases?
 		Error-prone
 		Tedious
 		Slow
+
+	Databases basically exist to take big chunks of data (which could be in millions or billions or even more) and answer queries on them in a reasonable amount of time without having to write a lot of custom code.
+
+Types of Databases:
+	1. Relational Databases (SQL):
+		Eg: Postgres (used at websites like reddit, hipmunk)
+			MySQL (Facebook and a lot more)
+			SQLite (which we will use in this class)
+				SQLite is a lightweight simple database, not really for working on huge databases but good for light weight work, small databases and learning purposes.
+			Oracle
+	2. Google App Engine's Datastore (Read about HRD: http://googleappengine.blogspot.in/2011/01/announcing-high-replication-datastore.html)
+	3. Amazon Dynamo - 
+	4. NoSQL:
+		Mongo
+		Couch
+
+	In this class we focus on basics of SQL and Google App Engine's Datastore
