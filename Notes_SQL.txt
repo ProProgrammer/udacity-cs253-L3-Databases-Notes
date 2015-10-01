@@ -1,0 +1,10 @@
+Notes_SQL:
+	Its a language for expressing queries
+
+	MySQL, Postgres SQL, SQLite use this language.
+	Was invented in 1970s (long before internet/web/web applications existed)
+
+	It was designed to solve problems very much different than the problems we will be solving building consumer web apps
+
+	Eg:
+		SELECT * FROM links WHERE id=5;
