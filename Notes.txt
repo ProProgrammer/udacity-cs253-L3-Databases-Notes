@@ -8,4 +8,12 @@ Tables:
 
 	Columns in database are basically the properties that make up a particular type
 
-	Every entry of data in a table is called a row
+	Every entry of data in a table is called a row. Its an instance of an element in the table.
+
+	The ID column is important in almost all tables. Generally every row has an ID and this is how we refer to that row specifically.
+
+Why Databases?
+	Downsides of querying data by hand (i.e. writing code by hand that queries the data):
+		Error-prone
+		Tedious
+		Slow
