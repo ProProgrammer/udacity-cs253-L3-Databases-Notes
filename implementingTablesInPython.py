@@ -86,16 +86,19 @@ links = [
 # example, a Link's number of votes can be accessed by link.votes if "link" is a
 # Link.
 
-# QUIZ - implement the function build_link_index() that creates a python dictionary
-# the maps a link's ID to the link itself
 def build_link_index():
-    output = {}
-    for link in links:
-        output[link.id] = link
-    return output
+    index = {}
+    for l in links:
+        index[l.id] = l
+    return index
+
+link_index = build_link_index()
 
 def link_by_id(link_id):
-    for l in links:
-        if l.id == link_id:
-            return l
+    return link_index.get(link_id)
 
+# QUIZ - implement the function add_new_link() that both adds a link to the 
+# "links" list and updates the link_index dictionary. 
+def add_new_link(link):
+    links.append(link)
+    link_index[link.id] = link
