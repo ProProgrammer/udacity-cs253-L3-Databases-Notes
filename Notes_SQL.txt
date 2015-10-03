@@ -17,4 +17,6 @@ Notes_SQL:
 		Indexes however probably decrease the speed of database insers. That is because when we are inserting a new round to our table, we probably also have to update all of our indexes and that takes time.
 
 		Hence, its a tradeoff, we can probably get faster reads at the expense of slower inserts and probably slower writes in general for just updating a row, but there's actually a few perverse cases where an index can actually increase the speed of an update.
-		
+
+		Awesome video on benefit of using indexes in real world by Steve Huffman:
+		https://www.udacity.com/course/viewer#!/c-cs253/l-48756013/m-48682569
