@@ -8,3 +8,13 @@ Notes_SQL:
 
 	Eg:
 		SELECT * FROM links WHERE id=5;
+
+
+	Indexes:
+		Indexes increase the speed of database reads, That is what they are used for at least.
+		Sometimes you don't make the right index, but assuming you make the correct index, your index matches your query, yes, you will increase the speed of your query.
+
+		Indexes however probably decrease the speed of database insers. That is because when we are inserting a new round to our table, we probably also have to update all of our indexes and that takes time.
+
+		Hence, its a tradeoff, we can probably get faster reads at the expense of slower inserts and probably slower writes in general for just updating a row, but there's actually a few perverse cases where an index can actually increase the speed of an update.
+		
