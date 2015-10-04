@@ -17,4 +17,8 @@
 
 ## Datastore is sharded and replicated
 	* Google doesn't share the details of how this is implemented at a very low level, but a lot of the constraints that we would be dealing with imply that the database is both sharded and replicated.
-	* 
+	* Some really nice properties here:
+		- You don't really have to think about scaling (too much)
+		- Your queries will generally be quick (because they have to be simple)
+		- And we might have to think about consistency (which is why we discussed about replication lag). Because things are sharded and sometimes the changes and updates to the data take time to propagate through the system, we're gonna actually have to acknowledge the fact that we are in a big database system and things may not always be consistent in all cases.
+		
