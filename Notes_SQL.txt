@@ -20,3 +20,59 @@ Notes_SQL:
 
 		Awesome video on benefit of using indexes in real world by Steve Huffman:
 		https://www.udacity.com/course/viewer#!/c-cs253/l-48756013/m-48682569
+
+	Indexes for Sorting (Tree):
+		When we talk of using hashtables (dictionaries) to create index, one of the characteristics of hashtable is that, they are not sorted (in python at least) 
+
+		SQL queries such as the ones that use ORDER BY require sorting however. So there's a different type of mapping that you can use and this is called a tree.
+		Trees are a basic data structure that accomplish something similar to hashtables but they have a nice property that they are sorted.
+
+		So, why would you ever use a hashtable when you can use a tree instead?
+			Well, the downside is that, the lookups are slower.
+			Hashtables lookups are faster.
+
+		Basically a hastable has a constant time lookup, which means that generally looking up any particular key in a hashtable is not a function of the number of keys in the hashtable. Their insertings can be hazardous, but in general the lookups are going to be constant time.
+
+		But in a tree, the lookups are going to be roughly a function of log n, where n is the number of elements in a tree. Hence lookups speed decreases as the size of the tree increases.
+		And depending on what you plan to use your index for, you may choose to use a hashtable or a tree. Many databases let you choose and some actually dont. Some do the choosing for you.
+
+		Interesting properties of indices used by most relational databases is that they preserve sorting and there are some cool things that we can do with that.
+		One is that if you wanna find all the links in your database sorted by the votes, if you created an index on votes, it would be a very very fast query.
+
+		Another awesome real world example, this time at reddit's: 
+		https://www.udacity.com/course/viewer#!/c-cs253/l-48756013/m-48271895
+
+	Scaling Databases:
+		Reasons why we might want to scale databases:
+			1. Too much load... A database is just doing too much work. Say for example, a database is handling too many requests and it just can't keep up with all the work.
+				So what you might often do in this case is, take your database and replicate it to other databases.
+				So everytime we insert a piece of data to the first database, we send it over to other guys (the replicates of original database) as well. Hence all of the database writes go to the master database which in turns gets replicated to other slave databases.
+
+				Hence now, if we a loads of requests hitting the master database, we can route those requests to the slave databases. Hence the requests could be distributed evenly.
+
+				Generally in most systems, you have a lot of reads then you do writes. So if your master can keep up with all of the writes, your slaves can handle all of the reads
+
+				Some downsides to this:
+					1. It doesn't increase the speed of writes, i.e. we are still bottlenecked with this one master receiving all of the data (that we need to write to the database)
+					2. Another downside is this notion of replication lag. This occurs when you write a piece of data to the master, but the read hits one of these slaves before the data has propagated. This is called replication lag.
+
+			2. What happens where there is simply too much data?
+				The replication of data takes care of the reads part, when there are too many read requests hitting your databases, however what if there is simply too much of data that you can't even fit onto your memory or even your disk...
+
+				One of the things you can do is you can shard the database.
+					In this scenario you can have a couple of masters instead of having just one master database.
+					Sharding basically stores the data in chunks onto multiple masters.
+
+					This is cool because now even if we triple our write loads (which was previously a bottleneck, see point 1) we have 3 database machines to handle it.
+
+					And ofcourse you can replicate these machines as well and a lot of systems both shard as well as replicate your machines.
+
+					However there are some downsides to sharding as well:
+						1. One of the downside is that the queries get much ore complex.
+						2. Another downside is that joins become difficult or impossible
+							That makes sense, so if we have this one database that has multiple tables on it, we can do joins but if we start sharding our database up, we have one database that doesn't even fit on one machines.
+							So if we can't fit one database on our machines, how are we gonna fit multiple databases (which could be the result of joins)
+
+		The Google App Engine Datastore actually has some of these limitations:
+			1. There are no joins allowed even though it does provide a SQL interface
+			2. And a lot of more complex queries that you could do in a general SQL database, you can't do in Google Datastore.
