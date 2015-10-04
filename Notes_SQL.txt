@@ -76,3 +76,10 @@ Notes_SQL:
 		The Google App Engine Datastore actually has some of these limitations:
 			1. There are no joins allowed even though it does provide a SQL interface
 			2. And a lot of more complex queries that you could do in a general SQL database, you can't do in Google Datastore.
+
+
+	ACID - https://www.udacity.com/course/viewer#!/c-cs253/l-48756013/m-48746017
+		1. Atomicity - All parts of a transaction succeed or fail together
+		2. Consistency - Database will always be consistent
+		3. Isolation - No Transaction can interfere with another's, sometimes this is accomplished through locking (i.e. if two transactions are affecting a same row, only one can go at a time.)
+		4. Durability - Once a transaction is committed, it won't be lost. I.e. if we send an update to our database, and we update some row and the database says OK, Successful. then even if the database is turned off or crashes or is unplugged, we won't lose that data.
